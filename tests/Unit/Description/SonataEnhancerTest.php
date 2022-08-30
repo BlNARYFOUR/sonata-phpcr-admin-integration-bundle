@@ -38,12 +38,10 @@ class SonataEnhancerTest extends \PHPUnit_Framework_TestCAse
             'FooController'
         );
         $this->container = new ContainerBuilder();
-        $this->pool = new Pool($this->container, 'Test', 'logo');
-        $this->pool->setAdminClasses([
+        $this->pool = new Pool($this->container, ['std_class_admin'], 'logo', [
             'stdClass' => ['std_class_admin'],
             'Exception' => ['std_class_admin'],
         ]);
-        $this->pool->setAdminServiceIds(['std_class_admin']);
 
         $this->container->set('std_class_admin', $this->admin);
         $this->generator = $this->prophesize(UrlGeneratorInterface::class);
